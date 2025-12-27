@@ -80,9 +80,12 @@
 
         <section class="section video-preview">
             <div class="container video-wrapper">
-                <img src="assets/video-thumb.svg" alt="Product video preview" class="video-image">
-                <button class="video-play" aria-label="Play product video">
-                    <span class="play-symbol">&#9658;</span>
+                <video id="productVideo" class="video-frame" poster="assets/video-thumb.svg" preload="metadata" playsinline>
+                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button id="videoToggle" class="video-toggle" type="button" aria-label="Play product video">
+                    <span class="video-toggle-icon" aria-hidden="true"></span>
                 </button>
             </div>
         </section>
@@ -156,16 +159,36 @@
         <section class="section testimonials">
             <div class="container testimonials-container">
                 <h2 class="section-title">Testimonials</h2>
-                <div class="testimonial-content">
-                    <img src="assets/logo-ibm.svg" alt="IBM" class="testimonial-logo">
-                    <p class="testimonial-text">Most calendars are designed for teams. Slate is designed for freelancers who want a simple way to plan their schedule.</p>
-                    <div class="testimonial-author-info">
-                        <img src="assets/avatar-placeholder.svg" alt="John Doe" class="author-avatar">
-                        <div class="author-details">
-                            <p class="author-name">John Doe</p>
-                            <p class="author-role">UI Designer</p>
-                        </div>
+                <div class="carousel" role="region" aria-live="polite">
+                    <button id="prevBtn" class="carousel-control" aria-label="Previous testimonial">
+                        <span class="chevron chevron-left" aria-hidden="true"></span>
+                    </button>
+                    <div class="carousel-track">
+                        <article class="testimonial-slide active">
+                            <img src="assets/logo-ibm.svg" alt="IBM" class="testimonial-logo">
+                            <blockquote>
+                                “Figma is at the core of our design workflow. It keeps our teams aligned across continents.”
+                            </blockquote>
+                            <p class="testimonial-author">Monica Spencer, Product Design Lead</p>
+                        </article>
+                        <article class="testimonial-slide">
+                            <img src="assets/logo-google.svg" alt="Google" class="testimonial-logo">
+                            <blockquote>
+                                “The real-time collaboration is transformative. We iterate faster than ever.”
+                            </blockquote>
+                            <p class="testimonial-author">Rahul Singh, UX Manager</p>
+                        </article>
+                        <article class="testimonial-slide">
+                            <img src="assets/logo-dropbox.svg" alt="Dropbox" class="testimonial-logo">
+                            <blockquote>
+                                “Our teams present prototypes the same day they’re conceived. Stakeholders love it.”
+                            </blockquote>
+                            <p class="testimonial-author">Emily Chen, Design Ops</p>
+                        </article>
                     </div>
+                    <button id="nextBtn" class="carousel-control" aria-label="Next testimonial">
+                        <span class="chevron chevron-right" aria-hidden="true"></span>
+                    </button>
                 </div>
                 <div class="carousel-dots" role="tablist" aria-label="Testimonial selection">
                     <button class="dot active" data-index="0" aria-label="Show testimonial 1"></button>
@@ -178,75 +201,105 @@
         <section id="pricing" class="section pricing">
             <div class="container">
                 <h2 class="section-title">Pricing</h2>
-                <p class="section-subtitle">Flexible plans for every team size.</p>
+                <p class="section-subtitle">Most calendars are designed for teams.<br>Slate is designed for freelancers</p>
                 <div class="pricing-grid">
                     <article class="pricing-card">
-                        <h3>Starter</h3>
-                        <p class="price">$0<span>/mo</span></p>
-                        <ul>
-                            <li>Unlimited drafts</li>
-                            <li>2 editors</li>
-                            <li>Community access</li>
+                        <h3 class="pricing-tier">Free</h3>
+                        <p class="pricing-tagline">Organize across all apps by hand</p>
+                        <p class="price"><span class="currency">$</span>0</p>
+                        <p class="billing-cycle">Per Month</p>
+                        <ul class="pricing-feature-list">
+                            <!-- <li>Pricing Feature</li> -->
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
                         </ul>
-                        <button class="btn-outline">Choose plan</button>
+                        <button class="btn-outline">Order Now</button>
                     </article>
                     <article class="pricing-card featured">
-                        <h3>Professional</h3>
-                        <p class="price">$10<span>/mo</span></p>
-                        <ul>
-                            <li>Unlimited editors</li>
-                            <li>Advanced prototyping</li>
-                            <li>Team libraries</li>
+                        <h3 class="pricing-tier">Standard</h3>
+                        <p class="pricing-tagline">Organize across all apps by hand</p>
+                        <p class="price"><span class="currency">$</span>10</p>
+                        <p class="billing-cycle">Per Month</p>
+                        <ul class="pricing-feature-list">
+                            <!-- <li>Pricing Feature</li> -->
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
                         </ul>
-                        <button class="btn-primary">Start trial</button>
+                        <button class="btn-primary">Order Now</button>
                     </article>
                     <article class="pricing-card">
-                        <h3>Organization</h3>
-                        <p class="price">$99<span>/mo</span></p>
-                        <ul>
-                            <li>Branches & analytics</li>
-                            <li>Design system analytics</li>
-                            <li>SSO + advanced security</li>
+                        <h3 class="pricing-tier">Business</h3>
+                        <p class="pricing-tagline">Organize across all apps by hand</p>
+                        <p class="price"><span class="currency">$</span>99</p>
+                        <p class="billing-cycle">Per Month</p>
+                        <ul class="pricing-feature-list">
+                            <!-- <li>Pricing Feature</li> -->
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
+                            <li>Pricing Feature</li>
                         </ul>
-                        <button class="btn-outline">Contact sales</button>
+                        <button class="btn-outline">Order Now</button>
                     </article>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="section contact">
-            <div class="container contact-grid">
-                <form id="contactForm" class="contact-form">
-                    <h2>Contact Us</h2>
-                    <p>Have a question? Reach out and our team will respond within 24 hours.</p>
-                    <label for="name">Your Name</label>
-                    <input id="name" name="name" type="text" placeholder="Your Name" required>
-                    <label for="email">Your Email</label>
-                    <input id="email" name="email" type="email" placeholder="Your Email" required>
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Message" rows="4"></textarea>
-                    <button type="submit" class="btn-primary">Send</button>
-                </form>
-                <div class="contact-details">
-                    <div class="detail-box">
-                        <h3>Visit our office</h3>
-                        <p>MG Road, Gurugram<br>Haryana, India</p>
-                    </div>
-                    <div class="detail-box">
-                        <h3>Call us</h3>
-                        <p>+91 98765 43210</p>
-                        <p>support@figma.co</p>
-                    </div>
-                    <div class="map-wrapper">
-                        <img src="assets/map.svg" alt="Office map" class="contact-map">
-                        <span class="map-pin" aria-hidden="true">
-                            <span class="map-pin__dot"></span>
-                        </span>
-                    </div>
-                    <div class="contact-social">
-                        <a href="#" aria-label="Twitter"><img src="assets/icon-twitter-dark.svg" alt="Twitter"></a>
-                        <a href="#" aria-label="LinkedIn"><img src="assets/icon-linkedin.svg" alt="LinkedIn"></a>
-                        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook-dark.svg" alt="Facebook"></a>
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Most calendars are designed for teams.<br>Slate is designed for freelancers</p>
+                <div class="contact-grid">
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <h3 class="contact-form-title">Contact Us</h3>
+                        <div class="form-field">
+                            <label class="sr-only" for="name">Your Name</label>
+                            <input id="name" name="name" type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="sr-only" for="email">Your Email</label>
+                            <input id="email" name="email" type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="sr-only" for="message">Your Message</label>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary contact-submit">Send</button>
+                    </form>
+                    <div class="contact-info">
+                        <ul class="contact-info-list">
+                            <li class="contact-info-item">
+                                <img src="assets/icon-location.svg" alt="" aria-hidden="true">
+                                <p>6386 Spring St undefined Anchorage,<br>Georgia 12473 United States</p>
+                            </li>
+                            <li class="contact-info-item">
+                                <img src="assets/icon-phone.svg" alt="" aria-hidden="true">
+                                <a href="tel:(843)555-0130">(843) 555-0130</a>
+                            </li>
+                            <li class="contact-info-item">
+                                <img src="assets/icon-mail.svg" alt="" aria-hidden="true">
+                                <a href="mailto:willie.jennings@example.com">willie.jennings@example.com</a>
+                            </li>
+                        </ul>
+                        <div class="map-wrapper">
+                            <iframe class="contact-map" title="Office location" src="https://maps.google.com/maps?q=Anchorage%20Museum%2C%20Alaska&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                            <div class="map-pointer" aria-hidden="true">
+                                <span class="pointer-icon"></span>
+                                <span class="pointer-label">tyagi13aman</span>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <a href="#" aria-label="Twitter"><img src="assets/icon-twitter-dark.svg" alt="Twitter"></a>
+                            <a href="#" aria-label="Facebook"><img src="assets/icon-facebook-dark.svg" alt="Facebook"></a>
+                            <a href="#" aria-label="LinkedIn"><img src="assets/icon-linkedin.svg" alt="LinkedIn"></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -255,7 +308,7 @@
 
     <div id="customModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <button class="close-btn" aria-label="Close modal">&times;</button>
+            <button class="modal-close" type="button" data-close-modal aria-label="Close modal">&times;</button>
             <h2 id="modalTitle">Get Started with Figma</h2>
             <p>Sign up today and bring your team’s best ideas to life.</p>
             <form class="modal-form">
@@ -266,45 +319,69 @@
         </div>
     </div>
 
+    <div id="contactModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+        <div class="modal-content">
+            <button class="modal-close" type="button" data-close-modal aria-label="Close modal">&times;</button>
+            <h2 id="contactModalTitle">Your query sent successfully</h2>
+            <p>Thanks for reaching out. Our team will get back to you shortly.</p>
+        </div>
+    </div>
+
     <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <span class="brand">FIGMA LAND</span>
-                <p>Design, prototype, and collaborate in the browser.</p>
-            </div>
-            <div>
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#">Updates</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Community</a></li>
-                    <li><a href="#">Privacy</a></li>
-                </ul>
+        <div class="container footer-top">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#partners">Partners</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Tomothy</h4>
+                    <ul>
+                        <li><a href="#">Eleanor Edwards</a></li>
+                        <li><a href="#">Ted Robertson</a></li>
+                        <li><a href="#">Annette Russell</a></li>
+                        <li><a href="#">Jennie McKinney</a></li>
+                        <li><a href="#">Gloria Richards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Jane Black</h4>
+                    <ul>
+                        <li><a href="#">Philip Jones</a></li>
+                        <li><a href="#">Product</a></li>
+                        <li><a href="#">Colleen Russell</a></li>
+                        <li><a href="#">Marvin Hawkins</a></li>
+                        <li><a href="#">Bruce Simmons</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-column--contact">
+                    <ul class="footer-contact-list">
+                        <li>
+                            <img src="assets/icon-location.svg" alt="" aria-hidden="true">
+                            <span>7480 Mockingbird Hill</span>
+                        </li>
+                        <li>
+                            <img src="assets/icon-phone.svg" alt="" aria-hidden="true">
+                            <a href="tel:(239)555-0108">(239) 555-0108</a>
+                        </li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter"><img src="assets/icon-twitter-light.svg" alt="Twitter"></a>
+                        <a href="#" aria-label="Facebook"><img src="assets/icon-facebook-light.svg" alt="Facebook"></a>
+                        <a href="#" aria-label="LinkedIn"><img src="assets/icon-linkedin-light.svg" alt="LinkedIn"></a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="container footer-bottom-content">
                 <p>&copy; 2025 JTG Home Assignment. All rights reserved.</p>
-                <div class="footer-social">
-                    <a href="#" aria-label="Twitter"><img src="assets/icon-twitter-light.svg" alt="Twitter"></a>
-                    <a href="#" aria-label="Instagram"><img src="assets/icon-instagram-light.svg" alt="Instagram"></a>
-                    <a href="#" aria-label="Facebook"><img src="assets/icon-facebook-light.svg" alt="Facebook"></a>
-                </div>
             </div>
         </div>
     </footer>
