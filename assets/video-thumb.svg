@@ -1,0 +1,16 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="thumbBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d2740"/>
+      <stop offset="100%" stop-color="#283355"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" rx="40" fill="url(#thumbBg)"/>
+  <rect x="120" y="120" width="420" height="440" rx="28" fill="#232f4c"/>
+  <rect x="580" y="180" width="360" height="28" rx="14" fill="#324063"/>
+  <rect x="580" y="240" width="280" height="20" rx="10" fill="#324063"/>
+  <rect x="580" y="288" width="320" height="20" rx="10" fill="#324063"/>
+  <rect x="580" y="336" width="260" height="20" rx="10" fill="#324063"/>
+  <circle cx="260" cy="340" r="80" fill="#18a0fb" opacity="0.8"/>
+  <polygon points="240,300 320,340 240,380" fill="#ffffff" opacity="0.92"/>
+</svg>
