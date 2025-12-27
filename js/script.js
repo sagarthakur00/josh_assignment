@@ -33,69 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Carousel logic
-    const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
-    const dots = Array.from(document.querySelectorAll('.dot'));
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let currentSlide = 0;
-    let rotationTimer;
-
-    const activateSlide = (index) => {
-        slides.forEach((slide, idx) => {
-            slide.classList.toggle('active', idx === index);
-        });
-        dots.forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === index);
-        });
-        currentSlide = index;
-    };
-
-    const showNextSlide = () => {
-        const nextIndex = (currentSlide + 1) % slides.length;
-        activateSlide(nextIndex);
-    };
-
-    const showPrevSlide = () => {
-        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
-        activateSlide(prevIndex);
-    };
-
-    const startRotation = () => {
-        rotationTimer = setInterval(showNextSlide, 5000);
-    };
-
-    const resetRotation = () => {
-        clearInterval(rotationTimer);
-        startRotation();
-    };
-
-    if (slides.length > 0) {
-        startRotation();
-    }
-
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            showPrevSlide();
-            resetRotation();
-        });
-    }
-
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            showNextSlide();
-            resetRotation();
-        });
-    }
-
-    dots.forEach((dot) => {
-        dot.addEventListener('click', (event) => {
-            const index = Number(event.currentTarget.dataset.index);
-            activateSlide(index);
-            resetRotation();
-        });
-    });
-
     // Simple contact form handler for demo purposes
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
