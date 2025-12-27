@@ -25,6 +25,14 @@ body {
     background-color: var(--color-background);
 }
 
+/* Prevent horizontal scrolling on small/overflowing content */
+html, body {
+    overflow-x: hidden;
+    /* allow vertical scrolling as usual */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -39,6 +47,15 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+/* Ensure embedded media can't force horizontal scroll */
+iframe,
+embed,
+object,
+video {
+    max-width: 100%;
+    height: auto;
 }
 
 ul {
@@ -224,21 +241,22 @@ ul {
 /* Hero */
 .hero {
     position: relative;
-    background: linear-gradient(120deg, rgba(18, 24, 45, 0.92), rgba(18, 24, 45, 0.82)), url('../assets/hero-illustration.svg') center/cover no-repeat;
+    background:  url('../assets/Rectangle 9.png') center/cover no-repeat;
     color: #fff;
-    padding: 220px 0 220px;
+    padding: 220px 0 280px;
     overflow: hidden;
 }
 
 .hero::after {
     content: "";
     position: absolute;
-    bottom: -1px;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 180px;
-    background-color: var(--color-surface);
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    height: 200px;
+    background-color: var(--color-background);
+    clip-path: polygon(0 40%, 50% 100%, 100% 40%, 100% 100%, 0 100%);
+    z-index: 1;
 }
 
 .hero-content {
@@ -359,9 +377,9 @@ ul {
 
 .video-wrapper {
     position: relative;
-    border-radius: 32px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 40px 80px rgba(13, 20, 34, 0.18);
+    box-shadow: 0 20px 50px rgba(15, 22, 36, 0.12);
     max-width: 920px;
     margin: 0 auto;
 }
@@ -370,7 +388,8 @@ ul {
     width: 100%;
     display: block;
     border: none;
-    background: #000;
+    background: transparent;
+    object-fit: cover;
 }
 
 .video-toggle {
@@ -480,48 +499,31 @@ ul {
 }
 
 /* Partners */
-/* Partners */
 .partners {
     background-color: transparent;
 }
 
 .partners-logos {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 48px 32px;
-    align-items: center;
-    justify-items: center;
-}
-
-.partner-item {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
+    margin: 48px 0;
 }
 
-.partner-label {
-    font-size: 14px;
-    color: #6B7280;
-    font-weight: 400;
-    text-align: center;
-}
-
-.partners-logos img {
-    max-height: 40px;
-    filter: grayscale(100%) opacity(0.6);
-    transition: var(--transition-base);
-}
-
-.partners-logos img:hover,
-.partners-logos img:focus {
-    filter: grayscale(0%) opacity(1);
+.partners-grid-image {
+    max-width: 100%;
+    height: auto;
 }
 
 .partners-cta {
-    margin-top: 48px;
+    margin-top: 56px;
     display: flex;
     justify-content: center;
+}
+
+.partners .btn-primary {
+    box-shadow: 0 20px 40px rgba(24, 160, 251, 0.35);
+    padding-inline: 48px;
 }
 
 /* Testimonials */
@@ -533,17 +535,15 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 36px;
+    gap: 28px;
 }
 
-.carousel {
+.testimonial-slider {
     position: relative;
     width: 100%;
-    max-width: 760px;
-    background: #ffffff;
-    border-radius: 26px;
-    padding: 64px 72px;
-    box-shadow: 0 34px 80px rgba(15, 22, 36, 0.14);
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 72px;
 }
 
 .carousel-track {
@@ -560,7 +560,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
 }
 
 .testimonial-slide.active {
@@ -580,8 +580,30 @@ ul {
     max-width: 520px;
 }
 
+.testimonial-user {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(24, 160, 251, 0.3);
+}
+
+.testimonial-user-meta {
+    text-align: left;
+}
+
 .testimonial-author {
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.testimonial-role {
+    font-size: 14px;
     color: var(--color-muted);
 }
 
@@ -603,11 +625,11 @@ ul {
 }
 
 #prevBtn {
-    left: 28px;
+    left: 12px;
 }
 
 #nextBtn {
-    right: 28px;
+    right: 12px;
 }
 
 .carousel-control:hover,
@@ -866,22 +888,52 @@ ul {
     padding-top: 12px;
 }
 
-.contact-info-list {
-    display: grid;
+.contact-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 24px;
+    flex-wrap: wrap;
 }
 
 .contact-info-item {
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
 }
 
-.contact-info-item img {
-    width: 32px;
-    height: 32px;
+.contact-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    margin-top: 2px;
+}
+
+.contact-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.contact-icon-location {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.contact-icon-phone {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.contact-icon-email {
+    background-color: var(--color-primary);
+    color: #ffffff;
 }
 
 .contact-info-item p,
@@ -893,6 +945,7 @@ ul {
 
 .contact-info-item a {
     transition: var(--transition-base);
+    text-decoration: none;
 }
 
 .contact-info-item a:hover,
@@ -1155,7 +1208,7 @@ ul {
 /* Responsive tweaks */
 @media (max-width: 1200px) {
     .hero {
-        padding: 200px 0 200px;
+        padding: 200px 0 260px;
     }
 
     .organize-content,
@@ -1166,7 +1219,7 @@ ul {
 
 @media (max-width: 1024px) {
     .hero {
-        padding: 180px 0 180px;
+        padding: 180px 0 240px;
     }
 
     .carousel {
@@ -1215,7 +1268,7 @@ ul {
     }
 
     .hero {
-        padding: 160px 0 160px;
+        padding: 160px 0 220px;
     }
 
     .hero-actions {
