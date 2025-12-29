@@ -45,32 +45,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Video player logic
     const video = document.getElementById('productVideo');
     const videoToggle = document.getElementById('videoToggle');
+    const videoWrapper = document.querySelector('.video-wrapper');
+    const videoPoster = document.getElementById('videoPoster');
 
     if (video && videoToggle) {
         videoToggle.addEventListener('click', () => {
             if (video.paused) {
                 video.play();
                 videoToggle.classList.add('is-playing');
+                if (videoWrapper) videoWrapper.classList.add('is-playing');
             } else {
                 video.pause();
                 videoToggle.classList.remove('is-playing');
+                if (videoWrapper) videoWrapper.classList.remove('is-playing');
             }
         });
 
         // Update button when video ends
         video.addEventListener('ended', () => {
             videoToggle.classList.remove('is-playing');
+            if (videoWrapper) videoWrapper.classList.remove('is-playing');
         });
 
         // Hide button while playing, show when paused
         video.addEventListener('play', () => {
             videoToggle.style.opacity = '0';
             videoToggle.style.pointerEvents = 'none';
+            if (videoWrapper) videoWrapper.classList.add('is-playing');
         });
 
         video.addEventListener('pause', () => {
             videoToggle.style.opacity = '1';
             videoToggle.style.pointerEvents = 'auto';
+            if (videoWrapper) videoWrapper.classList.remove('is-playing');
         });
     }
 

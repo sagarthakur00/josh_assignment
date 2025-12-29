@@ -28,11 +28,11 @@
                 <a href="#" aria-label="Twitter">
                     <img src="assets/icon-twitter-light.svg" alt="Twitter">
                 </a>
-                <a href="#" aria-label="Instagram">
-                    <img src="assets/icon-instagram-light.svg" alt="Instagram">
-                </a>
                 <a href="#" aria-label="Facebook">
-                    <img src="assets/icon-facebook-light.svg" alt="Facebook">
+                    <img src="assets/icon-facebook-boxy.svg" alt="Facebook">
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <img src="assets/icon-linkedin-boxy.svg" alt="LinkedIn">
                 </a>
             </div>
         </div>
@@ -79,9 +79,10 @@
         </section>
 
         <section class="section video-preview">
-            <div class="container video-wrapper">
-                <video id="productVideo" class="video-frame" poster="assets/@%20video%20screen.png" preload="metadata" playsinline>
-                    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+            <div class="video-wrapper">
+                <img id="videoPoster" src="assets/@%20video%20screen.png" alt="Video thumbnail" class="video-poster">
+                <video id="productVideo" class="video-frame" preload="metadata" playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <button id="videoToggle" class="video-toggle" type="button" aria-label="Play product video">
@@ -105,9 +106,14 @@
             <div class="container prototype-content">
                 <img src="assets/undraw_newsletter_vovu.png" alt="Prototyping illustration" class="prototype-image">
                 <div class="prototype-text">
+                    <p class="prototype-eyebrow">At your fingertips</p>
                     <h2>Lightning fast prototyping</h2>
-                    <p>Bring ideas to life within minutes. Connect screens, add interactions, and share with a single link.</p>
-                    <button class="btn-outline">Learn more</button>
+                    <p class="prototype-subtitle">Subscribe to our Newsletter</p>
+                    <p class="prototype-description">Available exclusively on Figmaland</p>
+                    <div class="prototype-form">
+                        <input type="email" placeholder="Your Email" class="prototype-email-input">
+                        <button class="btn-primary">Subscribe</button>
+                    </div>
                 </div>
             </div>
         </section>
